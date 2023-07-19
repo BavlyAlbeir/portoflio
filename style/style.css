@@ -3,6 +3,7 @@
   --main-color: #00f9f5;
   --main-transition: 0.3s;
   --main-scroll-transition: 1s;
+  --nav-height: 70px;
 }
 /* End Variables */
 /* Start Global Rules */
@@ -26,11 +27,11 @@ body::-webkit-scrollbar-track {
 body::-webkit-scrollbar-thumb {
   background-color: var(--main-color);
 }
-/*End scroll-bar */ 
+/*End scroll-bar */
 /* Handle on hover */
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   background-color: black;
   color: white;
 }
@@ -105,7 +106,6 @@ a {
   transform: translateY(-70px);
   opacity: 0;
   transition: all var(--main-scroll-transition) ease;
-
 }
 .spacial-heading::after {
   content: "";
@@ -134,10 +134,10 @@ a {
 
 /* Start Header */
 header {
-  height: 60px;
+  height: var(--nav-height);
   background-color: transparent;
 }
-header.fixed{
+header.fixed {
   position: fixed;
   z-index: 100;
   background-color: black;
@@ -145,18 +145,18 @@ header.fixed{
   animation: header 1s forwards;
 }
 @keyframes header {
-  0%{
+  0% {
     top: -70px;
     opacity: 0;
   }
-  100%{
+  100% {
     top: 0;
     opacity: 1;
   }
 }
 
 header .container {
-  height: 70px;
+  height: var(--nav-height);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -179,10 +179,8 @@ header .container ul li a {
   font-size: 15px;
   transition: var(--main-transition);
 }
-  /* header .container ul li a::selection{
-      
-  } */
-header .container ul li a:hover ,
+
+header .container ul li a:hover,
 header .container ul li a.active {
   color: var(--main-color);
 }
@@ -224,7 +222,7 @@ header .container .links .btn i {
       opacity: 1;
     }
   }
-  header .container ul.close{
+  header .container ul.close {
     display: block;
     width: 200px;
     position: absolute;
@@ -236,7 +234,7 @@ header .container .links .btn i {
     animation: to-Up 1s forwards;
   }
   @keyframes to-Up {
-    99%{
+    99% {
       top: 0px;
       opacity: 0;
     }
@@ -249,25 +247,27 @@ header .container .links .btn i {
   header .container ul.open a {
     display: block;
   }
-  
-  header .container ul.close a{
+
+  header .container ul.close a {
     display: block;
   }
 }
 /* ------------------end header-----------------------*/
 /* ----------------start landing----------------------- */
-
+.landing {
+  height: calc(100vh - 70px);
+}
 .landing .container {
   display: flex;
   justify-content: space-between;
   overflow: hidden;
-  
+  height: 100%;
 }
 .landing .container .text {
   width: 500px;
   display: flex;
   flex-direction: column;
-  margin-top: 120px;
+  margin-top: 170px;
   overflow: hidden;
 }
 .landing .container .text p:first-of-type {
@@ -294,7 +294,7 @@ header .container .links .btn i {
   width: 100%;
   background-color: black;
   border-left: 2px solid var(--main-color);
-  animation: write-effect 4s  infinite;
+  animation: write-effect 4s infinite;
   /* animation-timing-function: steps(12); */
   animation-delay: 1s;
 }
@@ -312,13 +312,13 @@ header .container .links .btn i {
   line-height: 1.4rem;
   margin-bottom: 30px;
 }
- .social {
+.social {
   display: flex;
 }
-.social.inner{
+.social.inner {
   flex-direction: row;
 }
- .social.inner a {
+.social.inner a {
   font-size: 16px;
   color: var(--main-color);
   margin-right: 30px;
@@ -330,9 +330,9 @@ header .container .links .btn i {
   justify-content: center;
   align-items: center;
 }
-.social.outer{
+.social.outer {
   flex-direction: column;
-  margin-top: 100px;  
+  margin-top: 100px;
 }
 .social.outer a {
   font-size: 16px;
@@ -357,6 +357,7 @@ header .container .links .btn i {
   width: 450px;
   position: relative;
   height: 600px;
+  margin-top: 70px;
 }
 
 .landing .container .image::before {
@@ -375,7 +376,6 @@ header .container .links .btn i {
   width: 100%;
 }
 @media (max-width: 991px) {
-
   .landing .container .image {
     display: none;
   }
@@ -396,10 +396,12 @@ header .container .links .btn i {
 .about {
   margin-top: 100px;
   overflow: hidden;
+  padding-top: var(--nav-height);
 }
 .about .container {
   display: flex;
   align-items: center;
+  padding-top: var(--nav-height);
 }
 .about .container .image {
   width: 400px;
@@ -417,9 +419,8 @@ header .container .links .btn i {
   flex: 1;
   margin-left: 150px;
   transform: translateX(100px);
-  opacity: 0;  
-  transition: all var(--main-scroll-transition)  ease;
-
+  opacity: 0;
+  transition: all var(--main-scroll-transition) ease;
 }
 .about .container .text h2 {
   font-size: 30px;
@@ -480,8 +481,9 @@ td {
 
 /* --------------------start Service---------------- */
 .service {
+  padding-top: var(--nav-height);
   margin-top: 100px;
-  overflow: hidden  ;
+  overflow: hidden;
 }
 .service .container {
   display: grid;
@@ -496,27 +498,29 @@ td {
   flex-direction: column;
   border: 2px solid white;
   border-radius: 10px;
-  transition: all var(--main-scroll-transition)  ease;
+  transition: all var(--main-scroll-transition) ease;
 }
-.service .container .card:nth-child(1){
+.service .container .card:nth-child(1) {
   opacity: 0;
   transform: translateX(-200px);
-}.service .container .card:nth-child(2){
-  opacity: 0;  
+}
+.service .container .card:nth-child(2) {
+  opacity: 0;
   transform: translateY(-200px);
-  
-}.service .container .card:nth-child(3){
+}
+.service .container .card:nth-child(3) {
   opacity: 0;
   transform: translateX(200px);
-  
-}.service .container .card:nth-child(4){
+}
+.service .container .card:nth-child(4) {
   opacity: 0;
   transform: translateX(-200px);
-  
-}.service .container .card:nth-child(5){
+}
+.service .container .card:nth-child(5) {
   opacity: 0;
   transform: translateY(200px);
-}.service .container .card:nth-child(6){
+}
+.service .container .card:nth-child(6) {
   opacity: 0;
   transform: translateX(200px);
 }
@@ -543,30 +547,31 @@ td {
 .service .container .card p {
   line-height: 1.5rem;
 }
-@media (max-width:991px) {
+@media (max-width: 991px) {
   .service .container .card {
-
-    transition: all var(--main-scroll-transition)  ease;
+    transition: all var(--main-scroll-transition) ease;
   }
-  .service .container .card:nth-child(1){
+  .service .container .card:nth-child(1) {
     opacity: 0;
     transform: translateX(-200px);
-  }.service .container .card:nth-child(2){
-    opacity: 0;  
-    transform: translateX(200px);
-    
-  }.service .container .card:nth-child(3){
-    opacity: 0;
-    transform: translateX(-200px);
-    
-  }.service .container .card:nth-child(4){
+  }
+  .service .container .card:nth-child(2) {
     opacity: 0;
     transform: translateX(200px);
-    
-  }.service .container .card:nth-child(5){
+  }
+  .service .container .card:nth-child(3) {
     opacity: 0;
     transform: translateX(-200px);
-  }.service .container .card:nth-child(6){
+  }
+  .service .container .card:nth-child(4) {
+    opacity: 0;
+    transform: translateX(200px);
+  }
+  .service .container .card:nth-child(5) {
+    opacity: 0;
+    transform: translateX(-200px);
+  }
+  .service .container .card:nth-child(6) {
     opacity: 0;
     transform: translateX(200px);
   }
@@ -598,13 +603,12 @@ td {
   transform: translate(-50%, -50%);
   z-index: 2;
   text-align: center;
-  
 }
 .freelance .text h3 {
   margin-bottom: 70px;
   transform: translateY(-50px);
   opacity: 0;
-  transition: all var(--main-scroll-transition)  ease;
+  transition: all var(--main-scroll-transition) ease;
 }
 .freelance .text a {
   font-size: 18px;
@@ -625,6 +629,8 @@ td {
 /*------------------- End Contact for freelance ----------*/
 /* -------------------Start MyWork-------------------- */
 .work {
+  padding-top: var(--nav-height);
+
   margin-top: 100px;
   margin-bottom: 200px;
 }
@@ -648,7 +654,8 @@ td {
   cursor: pointer;
   margin-bottom: 20px;
   display: flex;
-  justify-content: center;align-items: center;
+  justify-content: center;
+  align-items: center;
 }
 .work .container ul li.active,
 .work .container ul li:hover {
@@ -663,15 +670,13 @@ td {
   transform: translateY(100px);
   opacity: 0;
   transition: all var(--main-scroll-transition) ease;
-
 }
 
 .work .container .gallery .all {
   position: relative;
   width: 100%;
   display: block;
-  transition: all var(--main-scroll-transition) ease; 
-
+  transition: all var(--main-scroll-transition) ease;
 }
 .work .container .gallery .all img {
   width: 100%;
@@ -727,7 +732,7 @@ td {
   font-weight: bold;
   position: absolute;
   left: 50%;
-  transform: translateX(-50%,50px);
+  transform: translateX(-50%, 50px);
   opacity: 0;
   transition: all var(--main-scroll-transition) ease;
 }
@@ -737,32 +742,30 @@ td {
 }
 .chick {
   animation: filter-up 1s forwards;
-
 }
 .non-chick {
   animation: filter-down 1s forwards;
-} 
+}
 @keyframes filter-down {
-  0%{
+  0% {
     transform: scale(1);
-    }
-  100%{
+  }
+  100% {
     transform: scale(0);
   }
 }
 
 @keyframes filter-up {
-  0%{
+  0% {
     transform: scale(0);
   }
-  100%{
-  transform: scale(1);
+  100% {
+    transform: scale(1);
   }
-} 
-@media (max-width:600px) {
-  .work .container ul li{
+}
+@media (max-width: 600px) {
+  .work .container ul li {
     flex-basis: 40%;
-
   }
 }
 /* -------------------End MyWork-------------------- */
@@ -803,7 +806,6 @@ td {
   align-items: center;
   flex-direction: column;
   margin-right: 40px;
-  
 }
 
 .counter .container .column h3 {
@@ -825,6 +827,8 @@ td {
 /* --------------------------End counter--------------- */
 /* ---------------Start resume----------------------- */
 .resume {
+  padding-top: var(--nav-height);
+
   margin-top: 100px;
   overflow: hidden;
 }
@@ -839,13 +843,13 @@ td {
   align-items: center;
   flex-direction: column;
   flex-grow: 1;
-  transition: all  var(--main-scroll-transition) ease;
+  transition: all var(--main-scroll-transition) ease;
 }
-.resume .container .column-one{
+.resume .container .column-one {
   transform: translateX(-100px);
   opacity: 0;
 }
-.resume .container .column-two{
+.resume .container .column-two {
   transform: translateX(100px);
   opacity: 0;
 }
@@ -861,7 +865,7 @@ td {
 }
 .resume .container .box {
   margin-bottom: 20px;
-  width: 75%; 
+  width: 75%;
   border: 1px solid white;
   border-radius: 20px;
   padding: 20px 25px;
@@ -958,9 +962,10 @@ td {
 /* ---------------End resume----------------------- */
 /* ------------------Start Blog-------------------- */
 .blog {
+  padding-top: var(--nav-height);
+
   margin-top: 100px;
   overflow: hidden;
-  
 }
 .blog .container {
   display: grid;
@@ -973,36 +978,34 @@ td {
   margin-bottom: 30px;
   transition: all var(--main-scroll-transition) ease;
 }
-.blog .container .box:nth-child(1){
+.blog .container .box:nth-child(1) {
   opacity: 0;
   transform: translateX(-100px);
 }
-.blog .container .box:nth-child(2){
-opacity: 0;
-transform: translateY(-50px);
-
+.blog .container .box:nth-child(2) {
+  opacity: 0;
+  transform: translateY(-50px);
 }
-.blog .container .box:nth-child(3){
-opacity: 0;
-transform: translateX(100px);
-
+.blog .container .box:nth-child(3) {
+  opacity: 0;
+  transform: translateX(100px);
 }
-.blog .container .box .image{
-  width: 100%;  
+.blog .container .box .image {
+  width: 100%;
   overflow: hidden;
   z-index: 1;
 }
 .blog .container .box img {
   max-width: 100%;
-  transition:all var(--main-transition) ;
+  transition: all var(--main-transition);
 }
-.blog .container .box:hover img{
+.blog .container .box:hover img {
   transform: scale(1.09);
 }
 
 .blog .container .box .text {
   margin-top: -10px;
-  box-shadow:0px 0px 20px 0px rgb(255 255 255 / 30%);;
+  box-shadow: 0px 0px 20px 0px rgb(255 255 255 / 30%);
   padding: 25px;
 }
 
@@ -1038,7 +1041,7 @@ transform: translateX(100px);
   padding-right: 10px;
   margin-bottom: 20px;
 }
-.blog .container .box .text a{
+.blog .container .box .text a {
   color: white;
   background-color: var(--main-color);
   padding: 10px 20px;
@@ -1048,17 +1051,17 @@ transform: translateX(100px);
   border: 2px solid var(--main-color);
   transition: all var(--main-transition) ease;
 }
-.blog .container .box .text a:hover{
+.blog .container .box .text a:hover {
   color: var(--main-color);
   background-color: transparent;
 }
 /* ------------------End Blog-------------------- */
-.contact{
-margin-top: 100px;
-
+/* ------------------Start content-------------------- */
+.contact {
+  padding-top: var(--nav-height);
+  margin-top: 100px;
 }
-
-.contact .container form{
+.contact .container form {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1066,50 +1069,48 @@ margin-top: 100px;
   opacity: 0;
   transform: translateY(100px);
   transition: all var(--main-scroll-transition) ease;
-
 }
-.contact .container form input{
-  outline:unset;
+.contact .container form input {
+  outline: unset;
   border: 1px solid white;
-  background-color: transparent  ;
-  flex-grow: 1 ;
+  background-color: transparent;
+  flex-grow: 1;
   margin: 0 30px 20px 0;
   height: 40px;
   color: white;
   padding: 10px 10px 10px 15px;
   font-size: 14px;
   transition: all var(--main-transition) ease;
-  
 }
 .contact .container form input.active,
-.contact .container form #massage.active{
+.contact .container form #massage.active {
   border-color: rgb(58, 244, 58) !important;
 }
 
 .contact .container form input.non-active,
-.contact .container form #massage.non-active{
+.contact .container form #massage.non-active {
   border-color: red !important;
 }
 
 input:-webkit-autofill,
-input:-webkit-autofill:hover, 
+input:-webkit-autofill:hover,
 input:-webkit-autofill:focus {
-  -webkit-text-fill-color: white  ;
+  -webkit-text-fill-color: white;
   box-shadow: 0 0 0px 40rem rgb(0, 0, 0) inset;
 }
-.contact .container form input:focus ,
+.contact .container form input:focus,
 .contact .container form #massage:focus {
- border-color: var(--main-color);
+  border-color: var(--main-color);
 }
-.contact .container form input:nth-child(3){
+.contact .container form input:nth-child(3) {
   margin: 0 0 20px 0;
 }
-.contact .container form #massage{
-  outline:unset;
+.contact .container form #massage {
+  outline: unset;
   border: 1px solid white;
   order: 4;
-  flex: 100%;  
-  background-color: transparent ;
+  flex: 100%;
+  background-color: transparent;
   height: 150px;
   resize: none;
   padding: 15px;
@@ -1118,10 +1119,10 @@ input:-webkit-autofill:focus {
   color: white;
 }
 
-.contact .container form input[type=submit]{
+.contact .container form input[type="submit"] {
   order: 5;
   width: 150px;
-  height: 50px; 
+  height: 50px;
   display: inline-block;
   flex-grow: 0;
   display: flex;
@@ -1132,42 +1133,38 @@ input:-webkit-autofill:focus {
   background-color: var(--main-color);
   border: 2px solid var(--main-color);
   font-weight: bold;
-  
 }
-.contact .container form input[type=submit]:hover{
+.contact .container form input[type="submit"]:hover {
   color: var(--main-color);
   background-color: transparent;
 }
-@media (max-width:767px) {
-  .contact .container form input{
+@media (max-width: 767px) {
+  .contact .container form input {
     margin-right: 0;
   }
-  .contact .container form input:nth-child(3){
+  .contact .container form input:nth-child(3) {
     width: 100%;
   }
-  .contact .container form input:nth-child(2  ){
+  .contact .container form input:nth-child(2) {
     width: 100%;
   }
-
 }
 
-/* -----------------contact us--------------------- */
+/* -----------------End contact us--------------------- */
 /* ------------------------Start Footer----------------------- */
-footer{
+footer {
   margin-top: 100px;
   width: 100%;
   height: 70px;
   background-color: rgb(65, 65, 65);
   display: flex;
-  justify-content: center;align-items: center;
-
+  justify-content: center;
+  align-items: center;
 }
-footer p{
+footer p {
   font-weight: bold;
 }
-footer p span{
+footer p span {
   color: var(--main-color);
-
 }
 /* ------------------------End Footer----------------------- */
-
