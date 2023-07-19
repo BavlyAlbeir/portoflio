@@ -1,10 +1,7 @@
-let loc = 0;
-
 // --------------menu------------------------
 let list = document.querySelector(".links ul");
 let menu = document.querySelector("div.btn i");
 // scroll
-let header = document.querySelector("header");
 
 menu.addEventListener("click" , function () {
   if (list.classList.length == 0) {
@@ -34,7 +31,81 @@ document.addEventListener("click", function (e) {
 });
 list.addEventListener("click", function (e) {e.stopPropagation();});
 // menu on scroll
+let header = document.querySelector("header");
+let headerLinks = document.querySelector("header .container ul ");
+let headerLis = document.querySelectorAll("header .container ul li");
 
+
+
+
+window.addEventListener("scroll", function () {
+  if (window.scrollY >= about.offsetTop - 200) {
+    header.classList.add("fixed");
+  }
+  if (window.scrollY == 0) {
+    header.classList.remove("fixed");
+  }
+  
+  if (window.scrollY >= 0 && window.scrollY <= about.offsetTop - 200) {
+    list.children[0].children[0].classList.add("active");
+  } else {
+    list.children[0].children[0].classList.remove("active");
+  }
+  // about
+  if (
+    window.scrollY >= about.offsetTop - 200 &&
+    window.scrollY <= service.offsetTop - 200
+    ) {
+      list.children[1].children[0].classList.add("active");
+    } else {
+      list.children[1].children[0].classList.remove("active");
+    }
+    // service
+    if (
+      window.scrollY >= service.offsetTop - 200 &&
+    window.scrollY <= work.offsetTop - 500
+    ) {
+      list.children[2].children[0].classList.add("active");
+    } else {
+      list.children[2].children[0].classList.remove("active");
+    }
+    // work
+  if (
+    window.scrollY >= work.offsetTop - 200 &&
+    window.scrollY <= section.offsetTop - 200
+  ) {
+    list.children[3].children[0].classList.add("active");
+  } else {
+    list.children[3].children[0].classList.remove("active");
+  }
+  // resume
+  if (
+    window.scrollY >= resume.offsetTop - 200 &&
+    window.scrollY <= blog.offsetTop - 200
+  ) {
+    list.children[4].children[0].classList.add("active");
+  } else {
+    list.children[4].children[0].classList.remove("active");
+  }
+  // Blog
+  if (
+    window.scrollY >= blog.offsetTop - 200 &&
+    window.scrollY <= contact.offsetTop - 200
+  ) {
+    list.children[5].children[0].classList.add("active");
+  } else {
+    list.children[5].children[0].classList.remove("active");
+  }
+  // contact
+  if (
+    window.scrollY >= contact.offsetTop - 200 &&
+    window.scrollY <= document.body.offsetHeight
+  ) {
+    list.children[6].children[0].classList.add("active");
+  } else {
+    list.children[6].children[0].classList.remove("active");
+  }
+});
 
 // -------------------end-menu-----------------------
 // write effect
@@ -296,7 +367,9 @@ document.forms[0].onsubmit = function (e) {
 
   if (userName.value !== "" && userName.value.length >= 4) {
     userV = true;
-  }   
+  } else{
+
+  }
   if (userEmail.value !== "") {
     EmailV = true;
   } 
